@@ -22,8 +22,8 @@
         />
       </div>
       <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">
-          Confirm identity
+        <button type="submit" class="btn btn-primary mb-3" @click="authUser">
+          Submit
         </button>
       </div>
       <div>{{ email }}</div>
@@ -34,6 +34,20 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import AuthService from "../services/AuthService";
 let email = ref("");
 let password = ref("");
+
+const auth = new AuthService();
+auth.login(email.value, password.value);
+
+const authUser = async () => {
+  const auth = new AuthService();
+  const success = await auth.login(email.value, password.value);
+  if (success) {
+    alert("Exito en el Login!");
+  } else {
+    alert("Login incorrecto");
+  }
+};
 </script>

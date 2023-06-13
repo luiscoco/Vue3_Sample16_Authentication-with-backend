@@ -1,0 +1,4 @@
+//Install "ThunderClient" extension in VSCode
+https://376usy84.directus.app/auth/login
+email:testuser@gogodev.net
+password:12345678
